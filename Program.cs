@@ -10,44 +10,41 @@ string line;
 try
 {
     StreamWriter sw = new StreamWriter("C:\\Users\\willi\\OneDrive\\Desktop\\A2_3_1.txt");
-    sw.WriteLine("Name: \tChristopher Williams");
-    sw.WriteLine("Age: \t28");
-    sw.WriteLine("Address \t 1234 Mockingbird Lane");
+    sw.WriteLine("Name: \t\tChristopher Williams");
+    sw.WriteLine("Age: \t\t28");
+    sw.WriteLine("Address \t1234 Mockingbird Lane");
     sw.Close();
 }
 catch(Exception e)
 {
     Console.WriteLine("Exception " + e.Message);
 }
-finally
-{
-    Console.WriteLine("Executing the finally block.");
-}
 
 Console.WriteLine("Waiting...");
 Thread.Sleep(2000);
 
-try
+readDoc();
+void readDoc()
 {
-    StreamReader sr = new StreamReader("C:\\Users\\willi\\OneDrive\\Desktop\\A2_3_1.txt");
-    line = sr.ReadLine();
-
-    while(line != null)
+    try
     {
-        Console.WriteLine(line);
+        StreamReader sr = new StreamReader("C:\\Users\\willi\\OneDrive\\Desktop\\A2_3_1.txt");
         line = sr.ReadLine();
-    }
-    Console.WriteLine();
-    Console.WriteLine("Press enter to exit.");
 
-    sr.Close();
-    Console.ReadLine();
+        while (line != null)
+        {
+            Console.WriteLine(line);
+            line = sr.ReadLine();
+        }
+        Console.WriteLine();
+        Console.WriteLine("Press enter to exit.");
+
+        sr.Close();
+        Console.ReadLine();
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine("Exception " + e.Message);
+    }
 }
-catch(Exception e)
-{
-    Console.WriteLine("Exception " + e.Message);
-}
-finally
-{
-    Console.WriteLine("Executing the finally block.");
-}
+
