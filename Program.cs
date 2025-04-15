@@ -28,19 +28,23 @@ void readDoc()
 {
     try
     {
-        StreamReader sr = new StreamReader("C:\\Users\\willi\\OneDrive\\Desktop\\A2_3_1.txt");
-        line = sr.ReadLine();
-
-        while (line != null)
+        //using to run garbage collection on the StreamReader from the file.
+        using (StreamReader sr = new StreamReader("C:\\Users\\willi\\OneDrive\\Desktop\\A2_3_1.txt"))
         {
-            Console.WriteLine(line);
             line = sr.ReadLine();
-        }
-        Console.WriteLine();
-        Console.WriteLine("Press enter to exit.");
 
-        sr.Close();
-        Console.ReadLine();
+            while (line != null)
+            {
+                Console.WriteLine(line);
+                line = sr.ReadLine();
+            }
+            Console.WriteLine();
+            Console.WriteLine("Press enter to exit.");
+
+            sr.Close();
+            Console.ReadLine();
+        }
+            
     }
     catch (Exception e)
     {
